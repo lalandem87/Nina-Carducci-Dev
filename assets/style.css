@@ -42,6 +42,21 @@ body {
 	width: 20px;
 }
 
+.carousel-inner {
+	min-height: 400px;
+}
+
+.carousel-item {
+	min-height: 400px;
+}
+
+.carousel-item img {
+	object-fit: cover;
+	width: 100%;
+	height: auto;
+	aspect-ratio: 1243 / 700;
+}
+
 #about {
 	display: flex;
 	background-color: #F6D2B8;

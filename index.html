@@ -1,16 +1,38 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <title>Nina-Carducci-Dev</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./assets/bootstrap/bootstrap.css" />
-    <link rel="stylesheet" href="./assets/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      rel="preload"
       href="https://fonts.googleapis.com/css2?family=Inter&family=Spectral:ital,wght@0,400;1,300;1,400;1,800&display=swap"
-      rel="stylesheet"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Inter&family=Spectral:ital,wght@0,400;1,300;1,400;1,800&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+    <title>Nina-Carducci-Dev</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="preload"
+      href="assets/bootstrap/bootstrap.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript
+      ><link rel="stylesheet" href="assets/bootstrap/bootstrap.css"
+    /></noscript>
+    <link
+      rel="stylesheet"
+      href="./assets/style.css"
+      media="print"
+      onload="this.media='all'"
+    />
+
     <meta charset="UTF-8" />
   </head>
   <body>
@@ -69,7 +91,7 @@
           <div class="carousel-inner">
             <div class="carousel-item active">
               <img
-                src="../assets/images/slider/ryoji-iwata-wUZjnOv7t0g-unsplash-small.webp"
+                src="./assets/images/slider/ryoji-iwata-wUZjnOv7t0g-unsplash-small.webp"
                 srcset="
                   ./assets/images/slider/ryoji-iwata-wUZjnOv7t0g-unsplash-small.webp  1243w,
                   ./assets/images/slider/ryoji-iwata-wUZjnOv7t0g-unsplash-medium.webp 1865w,
@@ -78,6 +100,9 @@
                 sizes="(max-width: 768px) 100vw, 1243px"
                 class="d-block w-100"
                 loading="eager"
+                width="1243"
+                height="700"
+                fetchpriority="high"
                 alt="Homme d'affaires traversant un passage piéton en ville"
               />
             </div>
@@ -92,6 +117,10 @@
                 sizes="(max-width: 768px) 100vw, 1243px"
                 class="d-block w-100"
                 loading="lazy"
+                width="1243"
+                height="700"
+                fetchpriority="high"
+                loading="lazy"
                 alt="Foule en liesse lors d'un concert avec les mains levées"
               />
             </div>
@@ -105,6 +134,10 @@
                 "
                 sizes="(max-width: 768px) 100vw, 1243px"
                 class="d-block w-100"
+                loading="lazy"
+                width="1243"
+                height="700"
+                fetchpriority="high"
                 loading="lazy"
                 alt="Mariés s'embrassant lors de leur cérémonie de mariage"
               />
