@@ -6,33 +6,54 @@
     <title>Nina-Carducci-Dev</title>
     <meta name="description" content="Site Nina Carducci" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-    <!-- CORRECTION 1: Charger Bootstrap CSS en bloquant (pas via onload) -->
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      href="./assets/bootstrap/bootstrap.min.css"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript
+      ><link rel="stylesheet" href="/bootstrap/bootstrap.min.css"
+    /></noscript>
+
+    <link
+      rel="stylesheet"
+      href="/assets/fonts-secondary.css"
       media="print"
       onload="this.media='all'"
     />
 
     <link
       rel="preload"
-      href="assets/fonts/inter-v20-latin-regular.woff2"
+      href="./assets/fonts/inter-v20-latin-regular.woff2"
       as="font"
       type="font/woff2"
-      crossorigin=""
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="./assets/fonts/spectral-v15-latin-regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
     />
 
-    <link rel="stylesheet" href="./assets/fonts.css" />
-
-    <!-- CORRECTION 3: Styles critiques INLINE pour éviter tout shift -->
     <style>
+      @font-face {
+        font-family: "Inter";
+        src: url("./assets/fonts/inter-v20-latin-regular.woff2");
+      }
+      @font-face {
+        font-family: "Spectral";
+        font-weight: 400;
+        font-style: normal;
+        src: url("./assets/fonts/spectral-v15-latin-regular.woff2");
+      }
+
       /* ========================================
-   CSS CRITIQUE BOOTSTRAP - CARROUSEL UNIQUEMENT
-   À mettre dans le <style> inline du <head>
-   ======================================== */
+         CSS CRITIQUE BOOTSTRAP - CARROUSEL UNIQUEMENT
+         À mettre dans le <style> inline du <head>
+         ======================================== */
 
       /* 1. CAROUSEL BASE */
       .carousel {
@@ -747,15 +768,17 @@
   </body>
   <!-- CORRECTION 5: Scripts à la fin sans defer pour contrôle de l'ordre -->
   <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-    crossorigin="anonymous"
-  ></script>
-  <script
     src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
     crossorigin="anonymous"
+    defer
   ></script>
-  <script src="./assets/maugallery.js"></script>
-  <script src="./assets/scripts.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"
+    defer
+  ></script>
+  <script src="./assets/maugallery.js" defer></script>
+  <script src="./assets/scripts.js" defer></script>
 </html>
