@@ -1,40 +1,320 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nina-Carducci-Dev</title>
+    <meta name="description" content="Site Nina Carducci" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="preload"
-      href="https://fonts.googleapis.com/css2?family=Inter&family=Spectral:ital,wght@0,400;1,300;1,400;1,800&display=swap"
-      as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
-    />
-    <noscript>
-      <link
-        href="https://fonts.googleapis.com/css2?family=Inter&family=Spectral:ital,wght@0,400;1,300;1,400;1,800&display=swap"
-        rel="stylesheet"
-      />
-    </noscript>
-    <title>Nina-Carducci-Dev</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="preload"
-      href="assets/bootstrap/bootstrap.css"
-      as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
-    />
-    <noscript
-      ><link rel="stylesheet" href="assets/bootstrap/bootstrap.css"
-    /></noscript>
+
+    <!-- CORRECTION 1: Charger Bootstrap CSS en bloquant (pas via onload) -->
     <link
       rel="stylesheet"
-      href="./assets/style.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       media="print"
       onload="this.media='all'"
     />
 
-    <meta charset="UTF-8" />
+    <link
+      rel="preload"
+      href="assets/fonts/inter-v20-latin-regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin=""
+    />
+
+    <link rel="stylesheet" href="./assets/fonts.css" />
+
+    <!-- CORRECTION 3: Styles critiques INLINE pour éviter tout shift -->
+    <style>
+      /* ========================================
+   CSS CRITIQUE BOOTSTRAP - CARROUSEL UNIQUEMENT
+   À mettre dans le <style> inline du <head>
+   ======================================== */
+
+      /* 1. CAROUSEL BASE */
+      .carousel {
+        position: relative;
+      }
+
+      .carousel.pointer-event {
+        touch-action: pan-y;
+      }
+
+      .carousel-inner {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+      }
+
+      .carousel-inner::after {
+        display: block;
+        clear: both;
+        content: "";
+      }
+
+      .carousel-item {
+        position: relative;
+        display: none;
+        float: left;
+        width: 100%;
+        margin-right: -100%;
+        backface-visibility: hidden;
+        transition: transform 0.6s ease-in-out;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .carousel-item {
+          transition: none;
+        }
+      }
+
+      .carousel-item.active,
+      .carousel-item-next,
+      .carousel-item-prev {
+        display: block;
+      }
+
+      .carousel-item-next:not(.carousel-item-start),
+      .active.carousel-item-end {
+        transform: translateX(100%);
+      }
+
+      .carousel-item-prev:not(.carousel-item-end),
+      .active.carousel-item-start {
+        transform: translateX(-100%);
+      }
+
+      /* 2. CAROUSEL CONTROLS (flèches) */
+      .carousel-control-prev,
+      .carousel-control-next {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 15%;
+        padding: 0;
+        color: #fff;
+        text-align: center;
+        background: none;
+        border: 0;
+        opacity: 0.5;
+        transition: opacity 0.15s ease;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .carousel-control-prev,
+        .carousel-control-next {
+          transition: none;
+        }
+      }
+
+      .carousel-control-prev:hover,
+      .carousel-control-prev:focus,
+      .carousel-control-next:hover,
+      .carousel-control-next:focus {
+        color: #fff;
+        text-decoration: none;
+        outline: 0;
+        opacity: 0.9;
+      }
+
+      .carousel-control-prev {
+        left: 0;
+      }
+
+      .carousel-control-next {
+        right: 0;
+      }
+
+      .carousel-control-prev-icon,
+      .carousel-control-next-icon {
+        display: inline-block;
+        width: 2rem;
+        height: 2rem;
+        background-repeat: no-repeat;
+        background-position: 50%;
+        background-size: 100% 100%;
+      }
+
+      .carousel-control-prev-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3e%3c/svg%3e");
+      }
+
+      .carousel-control-next-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+      }
+
+      /* 3. CAROUSEL INDICATORS (points) */
+      .carousel-indicators {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 2;
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        margin-right: 15%;
+        margin-bottom: 1rem;
+        margin-left: 15%;
+        list-style: none;
+      }
+
+      .carousel-indicators [data-bs-target] {
+        box-sizing: content-box;
+        flex: 0 1 auto;
+        width: 30px;
+        height: 3px;
+        padding: 0;
+        margin-right: 3px;
+        margin-left: 3px;
+        text-indent: -999px;
+        cursor: pointer;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 0;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        opacity: 0.5;
+        transition: opacity 0.6s ease;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .carousel-indicators [data-bs-target] {
+          transition: none;
+        }
+      }
+
+      .carousel-indicators .active {
+        opacity: 1;
+      }
+
+      /* 4. UTILITIES BOOTSTRAP ESSENTIELLES */
+      .d-block {
+        display: block !important;
+      }
+
+      .w-100 {
+        width: 100% !important;
+      }
+
+      .visually-hidden {
+        position: absolute !important;
+        width: 1px !important;
+        height: 1px !important;
+        padding: 0 !important;
+        margin: -1px !important;
+        overflow: hidden !important;
+        clip: rect(0, 0, 0, 0) !important;
+        white-space: nowrap !important;
+        border: 0 !important;
+      }
+
+      /* 5. FADE VARIANT (si utilisé) */
+      .carousel-fade .carousel-item {
+        opacity: 0;
+        transition-property: opacity;
+        transform: none;
+      }
+
+      .carousel-fade .carousel-item.active,
+      .carousel-fade .carousel-item-next.carousel-item-start,
+      .carousel-fade .carousel-item-prev.carousel-item-end {
+        z-index: 1;
+        opacity: 1;
+      }
+
+      .carousel-fade .active.carousel-item-start,
+      .carousel-fade .active.carousel-item-end {
+        z-index: 0;
+        opacity: 0;
+        transition: opacity 0s 0.6s;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .carousel-fade .active.carousel-item-start,
+        .carousel-fade .active.carousel-item-end {
+          transition: none;
+        }
+      }
+      /* Styles critiques pour le carrousel - AVANT tout autre CSS */
+      #carouselExampleIndicators {
+        min-height: 700px !important;
+        height: 700px !important;
+        overflow: hidden !important;
+        position: relative;
+      }
+
+      .carousel-inner {
+        min-height: 700px !important;
+        height: 700px !important;
+        position: relative !important;
+      }
+
+      .carousel-item {
+        min-height: 700px !important;
+        height: 700px !important;
+        position: absolute !important;
+        top: 0;
+        left: 0;
+        width: 100%;
+        opacity: 0;
+        transition: none !important; /* Pas de transition au chargement */
+      }
+
+      .carousel-item.active {
+        position: relative !important;
+        opacity: 1;
+        display: block !important;
+      }
+
+      .carousel-item img {
+        object-fit: cover;
+        width: 100% !important;
+        height: 700px !important;
+        max-height: 700px !important;
+      }
+
+      /* Polices de secours avec métriques similaires */
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: Georgia, "Times New Roman", serif;
+      }
+
+      /* Mobile */
+      @media (max-width: 650px) {
+        #carouselExampleIndicators,
+        .carousel-inner,
+        .carousel-item {
+          min-height: 300px !important;
+          height: 300px !important;
+        }
+
+        .carousel-item img {
+          height: 300px !important;
+          max-height: 300px !important;
+        }
+      }
+    </style>
+
+    <link rel="stylesheet" href="./assets/style.css" />
   </head>
+
   <body>
     <header>
       <div class="top-header">
@@ -52,7 +332,9 @@
                   href="https://www.instagram.com/ninacarducci.photo/?hl=fr"
                   target="_blank"
                   ><img
-                    src="../assets/images/instagram.webp"
+                    src="./assets/images/instagram.webp"
+                    width="20"
+                    height="20"
                     alt="Suivez Nina Carducci sur Instagram"
                 /></a>
               </li>
@@ -61,10 +343,11 @@
         </nav>
       </div>
       <div id="header">
+        <!-- CORRECTION 4: Supprimer le style inline, déjà dans le CSS critique -->
         <div
           id="carouselExampleIndicators"
           class="carousel slide"
-          data-bs-ride="carousel"
+          data-bs-ride="false"
         >
           <div class="carousel-indicators">
             <button
@@ -116,10 +399,8 @@
                 "
                 sizes="(max-width: 768px) 100vw, 1243px"
                 class="d-block w-100"
-                loading="lazy"
                 width="1243"
                 height="700"
-                fetchpriority="high"
                 loading="lazy"
                 alt="Foule en liesse lors d'un concert avec les mains levées"
               />
@@ -134,10 +415,8 @@
                 "
                 sizes="(max-width: 768px) 100vw, 1243px"
                 class="d-block w-100"
-                loading="lazy"
                 width="1243"
                 height="700"
-                fetchpriority="high"
                 loading="lazy"
                 alt="Mariés s'embrassant lors de leur cérémonie de mariage"
               />
@@ -176,6 +455,8 @@
                 ./assets/images/nina-large.webp  668w
               "
               sizes="334px"
+              width="334"
+              height="334"
               alt="Portrait de Nina Carducci, photographe professionnelle"
             />
           </div>
@@ -206,17 +487,19 @@
         <div id="gallery">
           <h3 class="title">Portfolio</h3>
           <div class="container py-3">
-            <div class="gallery" style="display: none">
+            <div class="gallery">
               <img
                 data-gallery-tag="Concert"
                 class="gallery-item"
-                src="/assets/images/gallery/concerts/aaron-paul-wnX-fXzB6Cw-unsplash.webp"
+                src="./assets/images/gallery/concerts/aaron-paul-wnX-fXzB6Cw-unsplash-small.webp"
                 srcset="
                   ./assets/images/gallery/concerts/aaron-paul-wnX-fXzB6Cw-unsplash-small.webp  400w,
                   ./assets/images/gallery/concerts/aaron-paul-wnX-fXzB6Cw-unsplash-medium.webp 600w,
                   ./assets/images/gallery/concerts/aaron-paul-wnX-fXzB6Cw-unsplash-large.webp  800w
                 "
                 sizes="(max-width: 576px) 100vw, (max-width: 992px) 50vw, 33vw"
+                width="400"
+                height="400"
                 loading="lazy"
                 alt="Concert avec éclairages rouges et public en extase"
               />
@@ -230,6 +513,8 @@
                   ./assets/images/gallery/entreprise/ali-morshedlou-WMD64tMfc4k-unsplash-large.webp  800w
                 "
                 sizes="(max-width: 576px) 100vw, (max-width: 992px) 50vw, 33vw"
+                width="400"
+                height="400"
                 loading="lazy"
                 alt="Portrait professionnel d'un dirigeant d'entreprise en costume"
               />
@@ -243,6 +528,8 @@
                   ./assets/images/gallery/entreprise/jason-goodman-tHO1_OuKbg0-unsplash-large.webp  800w
                 "
                 sizes="(max-width: 576px) 100vw, (max-width: 992px) 50vw, 33vw"
+                width="400"
+                height="400"
                 loading="lazy"
                 alt="Femme souriante lors d'une réunion d'équipe en entreprise"
               />
@@ -256,6 +543,8 @@
                   ./assets/images/gallery/mariage/hannah-busing-RvF2R_qMpRk-unsplash-large.webp  800w
                 "
                 sizes="(max-width: 576px) 100vw, (max-width: 992px) 50vw, 33vw"
+                width="400"
+                height="400"
                 loading="lazy"
                 alt="Mains de mariés se rejoignant lors de la cérémonie"
               />
@@ -269,6 +558,8 @@
                   ./assets/images/gallery/portraits/ade-tunji-rVkhWWZFAtQ-unsplash-large.webp  800w
                 "
                 sizes="(max-width: 576px) 100vw, (max-width: 992px) 50vw, 33vw"
+                width="400"
+                height="400"
                 loading="lazy"
                 alt="Portrait artistique d'un homme fermant les yeux"
               />
@@ -282,6 +573,8 @@
                   ./assets/images/gallery/mariage/jakob-owens-SiniLJkXhMc-unsplash-large.webp  800w
                 "
                 sizes="(max-width: 576px) 100vw, (max-width: 992px) 50vw, 33vw"
+                width="400"
+                height="400"
                 loading="lazy"
                 alt="Couple de mariés marchant main dans la main au bord de la plage"
               />
@@ -295,6 +588,8 @@
                   ./assets/images/gallery/portraits/nino-van-prattenburg--443cl1uR_8-unsplash-large.webp  800w
                 "
                 sizes="(max-width: 576px) 100vw, (max-width: 992px) 50vw, 33vw"
+                width="400"
+                height="400"
                 loading="lazy"
                 alt="Portrait d'une jeune femme à travers une grille, regard intense"
               />
@@ -308,6 +603,8 @@
                   ./assets/images/gallery/concerts/austin-neill-hgO1wFPXl3I-unsplash-large.webp  800w
                 "
                 sizes="(max-width: 576px) 100vw, (max-width: 992px) 50vw, 33vw"
+                width="400"
+                height="400"
                 loading="lazy"
                 alt="Chanteur sur scène dans la fumée avec effets de lumière colorés"
               />
@@ -321,6 +618,8 @@
                   ./assets/images/gallery/entreprise/mateus-campos-felipe-Fsgzm8N0hIY-unsplash-large.webp  800w
                 "
                 sizes="(max-width: 576px) 100vw, (max-width: 992px) 50vw, 33vw"
+                width="400"
+                height="400"
                 loading="lazy"
                 alt="Femme riant devant son ordinateur dans un bureau moderne"
               />
@@ -420,11 +719,11 @@
               heures
             </p>
             <form action="" method="post">
-              <label>Nom</label>
+              <label for="nom">Nom</label>
               <input type="text" name="nom" id="nom" />
-              <label>Email</label>
+              <label for="email">Email</label>
               <input type="email" name="email" id="email" />
-              <label>Message</label>
+              <label for="message">Message</label>
               <textarea
                 name="message"
                 id="message"
@@ -437,6 +736,8 @@
           <div class="picture right">
             <img
               src="./assets/images/camera.webp"
+              width="400"
+              height="300"
               alt="Appareil photo professionnel de Nina Carducci"
             />
           </div>
@@ -444,13 +745,17 @@
       </div>
     </footer>
   </body>
-  <script src="./assets/bootstrap/bootstrap.bundle.js" defer></script>
+  <!-- CORRECTION 5: Scripts à la fin sans defer pour contrôle de l'ordre -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"
+  ></script>
   <script
     src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
     crossorigin="anonymous"
-    defer
   ></script>
-  <script src="./assets/maugallery.js" defer></script>
-  <script src="./assets/scripts.js" defer></script>
+  <script src="./assets/maugallery.js"></script>
+  <script src="./assets/scripts.js"></script>
 </html>
