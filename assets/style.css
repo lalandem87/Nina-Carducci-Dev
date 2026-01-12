@@ -1,7 +1,4 @@
-/* ------------------ RESET + BASE ------------------ */
-*,
-*::before,
-*::after {
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
@@ -20,12 +17,10 @@ img {
   max-width: 100%;
 }
 
-/* ------------------ TYPO ------------------ */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Spectral', Georgia, 'Times New Roman', serif;
 }
 
-/* ------------------ HEADER ------------------ */
 #header {
   min-height: 700px;
 }
@@ -68,9 +63,6 @@ h1, h2, h3, h4, h5, h6 {
   width: 20px;
 }
 
-/* ------------------ CARROUSEL ------------------ */
-/* Les styles critiques sont maintenant inline dans le HTML pour éviter le CLS */
-/* Styles supplémentaires pour le carrousel */
 .carousel-control-prev,
 .carousel-control-next {
   opacity: 0.7;
@@ -81,7 +73,6 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 1;
 }
 
-/* ------------------ ABOUT ------------------ */
 #about {
   display: flex;
   background: #F6D2B8;
@@ -129,18 +120,26 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 14px;
 }
 
-/* ------------------ GALLERY ------------------ */
 .title {
   text-align: center;
-  padding: 2em 0;
+  padding: 2em 2em;
 }
 
 .gallery {
   min-height: 1200px;
 }
 
-.gallery .nav {
+/* Grid pour la galerie - créée par maugallery.js */
+.gallery-items-row.row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5em;
+}
+
+.gallery .nav,
+.gallery .nav-pills {
   justify-content: center;
+  margin-bottom: 2em;
 }
 
 .nav-pills .nav-link.active {
@@ -153,24 +152,18 @@ h1, h2, h3, h4, h5, h6 {
   color: #000;
 }
 
+.gallery-item {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+  display: block;
+}
+
 .item-column {
-  position: relative;
   margin: 0 !important;
   padding: 0;
-}
-
-.item-column::after {
-  content: "";
-  display: block;
-  padding-bottom: 100%;
-}
-
-.gallery-item {
-  position: absolute;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  padding: 0.5em;
 }
 
 .mg-prev,
@@ -184,7 +177,69 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 24px;
 }
 
-/* ------------------ QUOTE ------------------ */
+/* Modale / Lightbox */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal.show {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-dialog {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.modal-content {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.modal-body {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-body img {
+  max-width: 90vw;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.mg-loaded .modal-dialog {
+  max-width: 90vw;
+}
+
+.mg-loaded .modal-body img {
+  max-height: 85vh;
+}
+
+@media (max-width: 768px) {
+  .modal-dialog {
+    max-width: 95vw;
+  }
+  
+  .modal-body img {
+    max-height: 80vh;
+  }
+}
+
 .quote {
   font-family: 'Spectral';
   font-style: italic;
@@ -199,7 +254,6 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 22px;
 }
 
-/* ------------------ SERVICES ------------------ */
 #services {
   background: #A8D5D8;
   position: relative;
@@ -235,7 +289,6 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: space-between;
 }
 
-/* ------------------ CONTACT ------------------ */
 #contact {
   background: #D8D3A8;
   padding: 100px;
@@ -289,109 +342,118 @@ input[type="submit"] {
   cursor: pointer;
 }
 
-/* ------------------ RESPONSIVE ------------------ */
+/* Responsive - Tablette */
 @media (max-width: 1180px) {
-  .picture { 
-    flex: 2; 
+  .picture {
+    flex: 2;
   }
-  
-  #about, 
-  #contact .container { 
-    align-items: center; 
+
+  #about,
+  #contact .container {
+    align-items: center;
   }
-  
-  #about-me h6, 
-  #about-me p { 
-    width: 100%; 
+
+  #about-me h6,
+  #about-me p {
+    width: 100%;
   }
 }
 
 @media (max-width: 1000px) {
-  #about { 
-    flex-direction: column; 
+  #about {
+    flex-direction: column;
   }
-  
-  .picture { 
-    width: 50%; 
+
+  .picture {
+    width: 50%;
   }
-  
+
   .picture.left::before {
     width: 100%;
     height: 30%;
     top: 0;
     bottom: auto;
   }
-  
+
   .gallery {
     min-height: 900px;
   }
-  
-  #services .container { 
-    flex-direction: column; 
-    align-items: center; 
+
+  .gallery-items-row.row {
+    grid-template-columns: repeat(2, 1fr);
   }
-  
+
+  #services .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
   .service {
     width: 100%;
     max-width: 100%;
     height: auto;
     margin: 2em 0;
   }
-  
+
   #services .container::before {
     width: 30%;
     height: 100%;
     right: 0;
     left: auto;
   }
-  
-  #contact .container { 
-    flex-direction: column; 
+
+  #contact .container {
+    flex-direction: column;
   }
-  
-  #contact .picture.right { 
-    margin-top: 1em; 
+
+  #contact .picture.right {
+    margin-top: 1em;
   }
-  
+
   .picture.right::before {
     width: 100%;
     height: 30%;
   }
 }
 
+/* Responsive - Mobile */
 @media (max-width: 650px) {
   .top-header {
     flex-direction: column;
     padding: 25px 0;
   }
-  
+
   .nav ul {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
   }
-  
+
   .nav li {
     padding: 1em;
     flex: 1 1 33%;
     text-align: center;
   }
-  
+
   .gallery {
     min-height: 600px;
   }
-  
-  #about, 
+
+  .gallery-items-row.row {
+    grid-template-columns: 1fr;
+  }
+
+  #about,
   #contact {
     padding: 2em;
   }
-  
-  form { 
-    width: 100%; 
+
+  form {
+    width: 100%;
   }
-  
-  .picture { 
-    width: 80%; 
+
+  .picture {
+    width: 80%;
   }
 }
