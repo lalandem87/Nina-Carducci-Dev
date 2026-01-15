@@ -2,10 +2,14 @@
   box-sizing: border-box;
 }
 
+* {
+    font-family: 'Inter';
+    font-style: normal;
+}
+
 body {
   max-width: 1920px;
   margin: auto;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   line-height: 1.4;
   font-optical-sizing: auto;
 }
@@ -19,6 +23,10 @@ img {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Spectral', Georgia, 'Times New Roman', serif;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2;
 }
 
 #header {
@@ -40,6 +48,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .top-header .name {
   font-size: 26px;
+}
+
+h3.name {
+    font-family: 'inter';
+    font-weight: 100;
 }
 
 .nav ul {
@@ -78,13 +91,12 @@ h1, h2, h3, h4, h5, h6 {
   background: #F6D2B8;
   padding: 100px;
   position: relative;
-  gap: 40px;
+  gap: 20px;
 }
 
 .picture {
   flex: 1;
   z-index: 0;
-  position: relative;
 }
 
 .picture.left::before {
@@ -98,21 +110,28 @@ h1, h2, h3, h4, h5, h6 {
   z-index: -1;
 }
 
+.picture.right::before {
+    position: absolute;
+    background-color: #BEB45A;
+  }
+
 #about-me {
   flex: 2;
-  max-width: 700px;
 }
 
 .about-me__title {
-  margin: 1em 0 60px;
-  font-size: 30px;
+    margin: 1em 0 60px;
+    font-size: 2rem;
+    font-weight: 500;
 }
 
 .about-me__introduction {
+  font-size: 1rem;
   font-family: 'Spectral';
   font-style: italic;
   font-weight: 800;
-  width: 60%;
+  width: 59%;
+  margin-bottom: 1em;
 }
 
 #about-me p {
@@ -123,18 +142,20 @@ h1, h2, h3, h4, h5, h6 {
 .title {
   text-align: center;
   padding: 2em 2em;
+  font-size: 2rem;
 }
 
 .gallery {
   min-height: 1200px;
 }
 
-/* Grid pour la galerie - créée par maugallery.js */
+
 .gallery-items-row.row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0.5em;
+  gap: 1em;
 }
+
 
 .gallery .nav,
 .gallery .nav-pills {
@@ -144,7 +165,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav-pills .nav-link.active {
   color: #fff;
-  background: #BEB45A;
+  background: #403a00;
   border-radius: 0;
 }
 
@@ -230,6 +251,14 @@ h1, h2, h3, h4, h5, h6 {
   max-height: 85vh;
 }
 
+.service__description h3 {
+  font-size: 1.75rem;
+}
+
+.service__price h4 {
+  font-size: 1.75rem;
+}
+
 @media (max-width: 768px) {
   .modal-dialog {
     max-width: 95vw;
@@ -249,9 +278,25 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
 }
 
+.quote__text {
+    font-family: Spectral;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 2.5rem;
+}
+
 .quote__author {
   font-weight: 800;
   font-size: 22px;
+}
+
+figure {
+  text-align: start;
+  margin: 0 0 1rem;
+}
+
+blockquote {
+    margin: 0;
 }
 
 #services {
@@ -290,6 +335,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #contact {
+  position: relative;
   background: #D8D3A8;
   padding: 100px;
 }
@@ -304,7 +350,6 @@ h1, h2, h3, h4, h5, h6 {
   background: #BEB45A;
   width: 374px;
   height: 329px;
-  position: absolute;
   bottom: 0;
   right: 0;
   z-index: -1;
@@ -314,11 +359,14 @@ h1, h2, h3, h4, h5, h6 {
   flex: 2;
 }
 
+.form-container h3 {
+  font-size: 1.75rem;
+}
+
 form {
   display: flex;
   flex-direction: column;
   width: 70%;
-  gap: 20px;
 }
 
 form input,
@@ -335,9 +383,13 @@ form textarea {
   resize: vertical;
 }
 
+label {
+    margin-top: 1em;
+}
+
 input[type="submit"] {
   background: #BEB45A;
-  border: none;
+  margin-top: 1em;
   padding: 0.5em 1em;
   cursor: pointer;
 }
