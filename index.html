@@ -1,15 +1,67 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <title>Nina-Carducci-Dev</title>
-    <meta name="description" content="Site Nina Carducci" />
+
+    <title>
+      Nina Carducci - Photographe Professionnelle à Bordeaux | Portraits,
+      Mariages, Événements
+    </title>
+    <meta
+      name="description"
+      content="Nina Carducci, photographe professionnelle à Bordeaux spécialisée en portraits, mariages et événements d'entreprise. Shooting photo dès 350€. Déplacement en Île-de-France."
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://nina-carducci.github.io/" />
+    <meta name="author" content="Nina Carducci" />
+
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Nina Carducci - Photographe Professionnelle à Bordeaux"
+    />
+    <meta
+      property="og:description"
+      content="Photographe spécialisée en portraits, mariages et événements d'entreprise. Capturez vos moments les plus précieux avec une professionnelle passionnée."
+    />
+    <meta property="og:url" content="https://nina-carducci.github.io/" />
+    <meta
+      property="og:image"
+      content="https://nina-carducci.github.io/assets/images/nina-large.webp"
+    />
+    <meta property="og:image:width" content="668" />
+    <meta property="og:image:height" content="668" />
+    <meta
+      property="og:image:alt"
+      content="Portrait de Nina Carducci, photographe professionnelle"
+    />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="Nina Carducci Photographie" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Nina Carducci - Photographe Professionnelle"
+    />
+    <meta
+      name="twitter:description"
+      content="Photographe à Bordeaux - Portraits, Mariages, Événements d'entreprise"
+    />
+    <meta
+      name="twitter:image"
+      content="https://nina-carducci.github.io/assets/images/nina-large.webp"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="Portrait de Nina Carducci, photographe"
+    />
+
     <link
       rel="stylesheet"
       href="/assets/fonts-secondary.css"
       media="print"
-      onload="this.media='all'"
+      onload="this.media = 'all'"
     />
     <link
       rel="preload"
@@ -246,8 +298,9 @@
         max-height: 700px !important;
       }
       body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-          Helvetica, Arial, sans-serif;
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+          Arial, sans-serif;
       }
       h1,
       h2,
@@ -308,7 +361,9 @@
         color: #000;
         text-decoration: none;
         cursor: pointer;
-        transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+        transition:
+          color 0.15s ease-in-out,
+          background-color 0.15s ease-in-out,
           border-color 0.15s ease-in-out;
       }
       .nav-pills .nav-link.active,
@@ -334,11 +389,98 @@
       }
     </style>
     <link rel="stylesheet" href="./assets/style.css" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Nina Carducci Photographie",
+        "image": "https://nina-carducci.github.io/assets/images/nina-large.webp",
+        "@id": "https://nina-carducci.github.io/",
+        "url": "https://nina-carducci.github.io/",
+        "telephone": "+33556677889",
+        "priceRange": "50€ - 400€",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "68 avenue Alsace-Lorraine",
+          "addressLocality": "Bordeaux",
+          "postalCode": "33200",
+          "addressCountry": "FR"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 44.8466,
+          "longitude": -0.6065
+        },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "10:00",
+          "closes": "19:00"
+        },
+        "sameAs": ["https://www.instagram.com/ninacarducci.photo/"]
+      }
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Nina Carducci - Photographe",
+        "image": "https://nina-carducci.github.io/assets/images/nina-large.webp",
+        "description": "Photographe professionnelle spécialisée en portraits, mariages et événements d'entreprise à Bordeaux",
+        "priceRange": "50€ - 400€",
+        "url": "https://nina-carducci.github.io/",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "68 avenue Alsace-Lorraine",
+          "addressLocality": "Bordeaux",
+          "postalCode": "33200",
+          "addressCountry": "FR"
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Services de photographie",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Shooting photo",
+                "description": "Séance photo pour capturer vos moments précieux. Déplacement en Île-de-France."
+              },
+              "price": "350",
+              "priceCurrency": "EUR"
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Retouches photo",
+                "description": "Retouche professionnelle pour un rendu optimal"
+              },
+              "price": "50",
+              "priceCurrency": "EUR"
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Album photos",
+                "description": "Album photo personnalisé A4 de 30 pages recto/verso"
+              },
+              "price": "400",
+              "priceCurrency": "EUR"
+            }
+          ]
+        }
+      }
+    </script>
   </head>
   <body>
     <header>
       <div class="top-header">
-        <h3 class="name">Nina Carducci</h3>
+        <h1 class="name">Nina Carducci</h1>
         <nav>
           <div class="nav">
             <ul>
@@ -351,11 +493,13 @@
                   class="social-link"
                   href="https://www.instagram.com/ninacarducci.photo/?hl=fr"
                   target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Suivez Nina Carducci sur Instagram"
                   ><img
                     src="./assets/images/instagram.webp"
                     width="20"
                     height="20"
-                    alt="Suivez Nina Carducci sur Instagram"
+                    alt="Instagram"
                 /></a>
               </li>
             </ul>
@@ -446,6 +590,7 @@
             type="button"
             data-bs-target="#carouselExampleIndicators"
             data-bs-slide="prev"
+            aria-label="Image précédente"
           >
             <span class="carousel-control-prev-icon" aria-hidden="true"></span
             ><span class="visually-hidden">Previous</span></button
@@ -454,6 +599,7 @@
             type="button"
             data-bs-target="#carouselExampleIndicators"
             data-bs-slide="next"
+            aria-label="Image suivante"
           >
             <span class="carousel-control-next-icon" aria-hidden="true"></span
             ><span class="visually-hidden">Next</span>
@@ -479,7 +625,7 @@
             />
           </div>
           <div id="about-me">
-            <h3 class="about-me__title">A propos de moi</h3>
+            <h2 class="about-me__title">A propos de moi</h2>
             <p class="about-me__introduction">
               Devenir photographe était pour moi une évidence. Comme si j'y
               étais prédestiné. Saisir un moment, une émotion, une situation, un
@@ -502,7 +648,7 @@
       </section>
       <section class="section-gallery">
         <div id="gallery">
-          <h3 class="title">Portfolio</h3>
+          <h2 class="title">Portfolio</h2>
           <div class="container py-3">
             <div class="gallery">
               <img
@@ -638,13 +784,13 @@
             <div class="quote">
               <figure>
                 <blockquote>
-                  <h1 class="quote__text">
+                  <p class="quote__text">
                     Un portrait n'est pas une ressemblance. Dès lors qu'une
                     émotion ou qu'un fait est traduit en photo, il cesse d'être
                     un fait pour devenir une opinion. L'inexactitude n'existe
                     pas en photographie. Toutes les photos sont exactes. Aucune
                     d'elles n'est la vérité.
-                  </h1>
+                  </p>
                 </blockquote>
                 <figcaption class="quote__author">- Richard Avedon</figcaption>
               </figure>
@@ -720,16 +866,17 @@
       <div id="contact">
         <div class="container">
           <div class="form-container">
-            <h3>Une question ? Une demande de devis ?</h3>
+            <h2>Une question ? Une demande de devis ?</h2>
             <p>
               N'hésitez pas à m'écrire ! Je vous répondrais en moins de 24
               heures
             </p>
             <form action="" method="post">
               <label for="nom">Nom</label
-              ><input type="text" name="nom" id="nom" /><label for="email"
+              ><input type="text" name="nom" id="nom" required /><label
+                for="email"
                 >Email</label
-              ><input type="email" name="email" id="email" /><label
+              ><input type="email" name="email" id="email" required /><label
                 for="message"
                 >Message</label
               ><textarea
@@ -737,6 +884,7 @@
                 id="message"
                 cols="30"
                 rows="10"
+                required
               ></textarea
               ><input type="submit" value="Envoyer" />
             </form>
