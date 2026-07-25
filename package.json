@@ -18,6 +18,6 @@
   "homepage": "https://github.com/lalandem87/Nina-Carducci-Dev#readme",
   "description": "",
   "dependencies": {
-    "sharp": "^0.34.5"
+    "sharp": "^0.35.0"
   }
 }
